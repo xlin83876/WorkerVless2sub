@@ -41,7 +41,7 @@ let MamaJustKilledAMan = ['telegram', 'twitter', 'miaoko'];
 let proxyIPPool = [];
 let socks5Data;
 let alpn = 'h3';
-let 网络备案 = `<a href='https://t.me/CMLiussss'>萌ICP备-20240707号</a>`;//写你自己的维护者广告
+let 网络备案 = `<a href='https://t.me/jiliankeji'>萌ICP备-20240707号</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
 let 网站图标, 网站头像, 网站背景;
@@ -990,10 +990,10 @@ async function subHtml(request) {
 				${网站图标}
 				<style>
 					:root {
-						--primary-color: #4361ee;
-						--hover-color: #3b4fd3;
-						--bg-color: #f5f6fa;
-						--card-bg: #ffffff;
+						--primary-color: #f4a261;
+						--hover-color: #e07630;
+						--bg-color: #e07630;
+						--card-bg: #555555;
 					}
 					
 					* {
@@ -1020,10 +1020,10 @@ async function subHtml(request) {
 					.container {
 						position: relative;
 						/* 使用rgba设置半透明背景 */
-						background: rgba(255, 255, 255, 0.7);
+						background: rgba(255, 255, 255, 0.1);
 						/* 添加磨砂玻璃效果 */
 						backdrop-filter: blur(10px);
-						-webkit-backdrop-filter: blur(10px); /* Safari兼容 */
+						-webkit-backdrop-filter: blur(1px); /* Safari兼容 */
 						max-width: 600px;
 						width: 90%;
 						padding: 2rem;
@@ -1036,7 +1036,7 @@ async function subHtml(request) {
 
 					/* 调整hover效果 */
 					.container:hover {
-						transform: translateY(-5px);
+						transform: translateY(-3px);
 						box-shadow: 0 15px 30px rgba(0,0,0,0.1),
 									inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 					}
@@ -1046,6 +1046,11 @@ async function subHtml(request) {
 						color: var(--primary-color);
 						margin-bottom: 2rem;
 						font-size: 1.8rem;
+					}
+					
+					::selection {
+						background: var(--primary-color); /* 选中文本背景变为橙色 */
+						color: white;
 					}
 					
 					.input-group {
@@ -1172,7 +1177,7 @@ async function subHtml(request) {
 							from 0deg,
 							transparent 0%,
 							var(--primary-color) 20%,
-							rgba(67, 97, 238, 0.8) 40%,
+							rgba(228, 120, 48, 0.8) 40%,
 							transparent 60%,
 							transparent 100%
 						);
@@ -1305,7 +1310,7 @@ async function subHtml(request) {
 							<h1>${FileName}</h1>
 						</div>
 					<div class="input-group">
-						<label for="link">节点链接</label>
+						<label for="link" style="font-weight: bold;">节点链接</label>
 						<input type="text" id="link" placeholder="${decodeURIComponent(atob('JUU4JUFGJUI3JUU4JUJFJTkzJUU1JTg1JUE1JTIwVk1lc3MlMjAlMkYlMjBWTEVTUyUyMCUyRiUyMFRyb2phbiUyMCVFOSU5MyVCRSVFNiU4RSVBNQ=='))}">
 					</div>
 					
@@ -1313,7 +1318,7 @@ async function subHtml(request) {
 					
 					<div class="input-group">
 						<div style="display: flex; align-items: center;">
-							<label for="result">优选订阅</label>
+							<label for="result" style="font-weight: bold;">优选订阅</label>
 							<div style="position: relative;">
 								<span class="info-icon" onclick="toggleTooltip(event)">!</span>
 								<div class="info-tooltip" id="infoTooltip">
@@ -1361,7 +1366,7 @@ async function subHtml(request) {
 							tooltip.style.top = '20px';
 							tooltip.style.transform = 'translateX(-50%)';
 							tooltip.style.padding = '8px 16px';
-							tooltip.style.background = '#4361ee';
+							tooltip.style.background = 'var(--primary-color';
 							tooltip.style.color = 'white';
 							tooltip.style.borderRadius = '4px';
 							tooltip.style.zIndex = '1000';
@@ -1421,7 +1426,7 @@ async function subHtml(request) {
 								text: subLink,
 								width: 220, // 调整宽度
 								height: 220, // 调整高度
-								colorDark: "#4a60ea", // 二维码颜色
+								colorDark: "#f4a261", // 二维码颜色
 								colorLight: "#ffffff", // 背景颜色
 								correctLevel: QRCode.CorrectLevel.L, // 设置纠错级别
 								scale: 1 // 调整像素颗粒度
