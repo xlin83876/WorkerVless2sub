@@ -992,7 +992,7 @@ async function subHtml(request) {
 					:root {
 						--primary-color: #f4a261;
 						--hover-color: #e07630;
-						--bg-color: #e07630;
+						--bg-color: #fce4d6;
 						--card-bg: #555555;
 					}
 					
@@ -1177,7 +1177,7 @@ async function subHtml(request) {
 							from 0deg,
 							transparent 0%,
 							var(--primary-color) 20%,
-							rgba(228, 120, 48, 0.8) 40%,
+							rgba(252,228,214, 0.8) 40%,
 							transparent 60%,
 							transparent 100%
 						);
@@ -1366,7 +1366,7 @@ async function subHtml(request) {
 							tooltip.style.top = '20px';
 							tooltip.style.transform = 'translateX(-50%)';
 							tooltip.style.padding = '8px 16px';
-							tooltip.style.background = 'var(--primary-color';
+							tooltip.style.background = 'var(--primary-color)';
 							tooltip.style.color = 'white';
 							tooltip.style.borderRadius = '4px';
 							tooltip.style.zIndex = '1000';
