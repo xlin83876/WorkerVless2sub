@@ -1,4 +1,3 @@
-
 let 快速订阅访问入口 = ['auto'];
 let addresses = [];
 let addressesapi = [];
@@ -44,7 +43,7 @@ let alpn = 'h3';
 let 网络备案 = `<a href='https://t.me/jiliankeji'>萌ICP备-20240707号</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
-let 网站图标, 网站头像, 网站背景, xhttp = '';
+let 网站图标, 网站头像, 网站背景;
 async function 整理优选列表(api) {
 	if (!api || api.length === 0) return [];
 
@@ -464,7 +463,95 @@ function utf8ToBase64(str) {
 }
 
 export default {
-	async fetch(request, env) {
+    async fetch(request, env) {
+        // 定义主题
+        const themes = {
+			1: {
+				primaryColor: '#f4a261',  // 琥珀橙
+				hoverColor: '#e07630',
+				bgColor: '#fce4d6',
+				cardBg: '#555555',
+				gradientColor: 'rgba(252,228,214, 0.8)',
+				qrColor: '#f4a261'
+			},
+			2: {
+				primaryColor: '#292524',  // 深褐黑
+				hoverColor: '#44403c',
+				bgColor: '#1c1917',
+				cardBg: '#292524',
+				gradientColor: 'rgba(41,37,36, 0.8)',
+				qrColor: '#78716c'
+			},
+			3: {
+				primaryColor: '#3f8a5f',  // 深绿
+				hoverColor: '#2e6b4b',
+				bgColor: '#e8f5e9',
+				cardBg: '#c8e6c9',
+				gradientColor: 'rgba(63,138,95, 0.8)',
+				qrColor: '#3f8a5f'
+			},
+			4: {
+				primaryColor: '#8b5cf6',  // 梦幻紫
+				hoverColor: '#7c3aed',
+				bgColor: '#f5f3ff',
+				cardBg: '#ede9fe',
+				gradientColor: 'rgba(139,92,246, 0.8)',
+				qrColor: '#8b5cf6'
+			},
+			5: {
+				primaryColor: '#FF6B81',  // 草莓红
+				hoverColor: '#FF4757',
+				bgColor: '#FFE6E6',
+				cardBg: '#FFCDD2',
+				gradientColor: 'rgba(255,107,129, 0.8)',
+				qrColor: '#FF6B81'
+			},
+			6: {
+				primaryColor: '#ec4899',  // 甜心粉
+				hoverColor: '#db2777',
+				bgColor: '#fdf2f8',
+				cardBg: '#fce7f3',
+				gradientColor: 'rgba(236,72,153, 0.8)',
+				qrColor: '#ec4899'
+			},
+			7: {
+				primaryColor: '#f97316',  // 活力橙
+				hoverColor: '#ea580c',
+				bgColor: '#fff7ed',
+				cardBg: '#ffedd5',
+				gradientColor: 'rgba(249,115,22, 0.8)',
+				qrColor: '#f97316'
+			},
+			8: {
+				primaryColor: '#06b6d4',  // 碧海蓝
+				hoverColor: '#0891b2',
+				bgColor: '#ecfeff',
+				cardBg: '#cffafe',
+				gradientColor: 'rgba(6,182,212, 0.8)',
+				qrColor: '#06b6d4'
+			},
+			9: {
+				primaryColor: '#6366f1',  // 星空蓝
+				hoverColor: '#4f46e5',
+				bgColor: '#eef2ff',
+				cardBg: '#e0e7ff',
+				gradientColor: 'rgba(99,102,241, 0.8)',
+				qrColor: '#6366f1'
+			},
+			10: {
+				primaryColor: '#14b8a6',  // 青碧绿
+				hoverColor: '#0d9488',
+				bgColor: '#f0fdfa',
+				cardBg: '#ccfbf1',
+				gradientColor: 'rgba(20,184,166, 0.8)',
+				qrColor: '#14b8a6'
+			}
+		};
+
+        // 使用变量来设置主题
+        const COLOR = Number(env.COLOR) || 3; // 选择自然绿色主题
+        const theme = themes[COLOR];
+
 		if (env.TOKEN) 快速订阅访问入口 = await 整理(env.TOKEN);
 		BotToken = env.TGTOKEN || BotToken;
 		ChatID = env.TGID || ChatID;
@@ -573,10 +660,7 @@ export default {
 			path = url.searchParams.get('path');
 			sni = url.searchParams.get('sni') || host;
 			type = url.searchParams.get('type') || type;
-			const mode = url.searchParams.get('mode') || null;
-			const extra = url.searchParams.get('extra') || null;
-			xhttp = (mode ? `&mode=${mode}` : "") + (extra ? `&extra=${encodeURIComponent(extra)}` : "");
-			alpn = url.searchParams.get('alpn') || (xhttp ? "h3%2Ch2" : alpn);
+			alpn = url.searchParams.get('alpn') || alpn;
 			隧道版本作者 = url.searchParams.get(atob('ZWRnZXR1bm5lbA==')) || url.searchParams.get(atob('ZXBlaXVz')) || 隧道版本作者;
 			获取代理IP = url.searchParams.get('proxyip') || 'false';
 
@@ -604,7 +688,7 @@ export default {
 					const URL = URLs[Math.floor(Math.random() * URLs.length)];
 					return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
 				}
-				return await subHtml(request);
+				return await subHtml(request, theme);
 			}
 
 			if (!host || !uuid) {
@@ -656,7 +740,7 @@ export default {
 				const URL = URLs[Math.floor(Math.random() * URLs.length)];
 				return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
 			}
-			return await subHtml(request);
+			return await subHtml(request, theme);
 		} else if ((userAgent.includes('clash') || (format === 'clash' && !userAgent.includes('subconverter'))) && !userAgent.includes('nekobox') && !userAgent.includes('cf-workers-sub')) {
 			subConverterUrl = `https://${subConverter}/sub?target=clash&url=${encodeURIComponent(subConverterUrl)}&insert=false&config=${encodeURIComponent(subConfig)}&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
 		} else if ((userAgent.includes('sing-box') || userAgent.includes('singbox') || (format === 'singbox' && !userAgent.includes('subconverter'))) && !userAgent.includes('cf-workers-sub')) {
@@ -769,11 +853,11 @@ export default {
 
 							if (foundProxyIP) {
 								// 如果找到匹配的proxyIP，赋值给path
-								path = atob('L3Byb3h5aXA9') + foundProxyIP;
+								path = atob('Lz9lZD0yNTYwJnByb3h5aXA9') + foundProxyIP;
 							} else {
 								// 如果没有找到匹配项，随机选择一个proxyIP
 								const randomProxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
-								path = atob('L3Byb3h5aXA9') + randomProxyIP;
+								path = atob('Lz9lZD0yNTYwJnByb3h5aXA9') + randomProxyIP;
 							}
 						}
 					}
@@ -855,14 +939,14 @@ export default {
 
 						const matchingProxyIP = proxyIPPool.find(proxyIP => proxyIP.includes(address));
 						if (matchingProxyIP) {
-							path = atob('L3Byb3h5aXA9') + matchingProxyIP;
+							path = atob('Lz9lZD0yNTYwJnByb3h5aXA9') + matchingProxyIP;
 						} else if (foundProxyIP) {
 							// 如果找到匹配的proxyIP，赋值给path
-							path = atob('L3Byb3h5aXA9') + foundProxyIP;
+							path = atob('Lz9lZD0yNTYwJnByb3h5aXA9') + foundProxyIP;
 						} else {
 							// 如果没有找到匹配项，随机选择一个proxyIP
 							const randomProxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
-							path = atob('L3Byb3h5aXA9') + randomProxyIP;
+							path = atob('Lz9lZD0yNTYwJnByb3h5aXA9') + randomProxyIP;
 						}
 					}
 				}
@@ -878,13 +962,13 @@ export default {
 				}
 
 				if (协议类型 == 'VMess') {
-					const vmessLink = `vmess://${utf8ToBase64(`{"v":"2","ps":"${addressid + 节点备注}","add":"${address}","port":"${port}","id":"${uuid}","aid":"${额外ID}","scy":"${加密方式}","net":"ws","type":"${type}","host":"${伪装域名}","path":"${最终路径}","tls":"tls","sni":"${sni}","alpn":"${encodeURIComponent(alpn)}","fp":"","allowInsecure":"1","fragment":"1,40-60,30-50,tlshello"}`)}`;
+					const vmessLink = `vmess://${utf8ToBase64(`{"v":"2","ps":"${addressid + 节点备注}","add":"${address}","port":"${port}","id":"${uuid}","aid":"${额外ID}","scy":"${加密方式}","net":"ws","type":"${type}","host":"${伪装域名}","path":"${最终路径}","tls":"tls","sni":"${sni}","alpn":"${encodeURIComponent(alpn)}","fp":""}`)}`;
 					return vmessLink;
 				} else if (协议类型 == atob('VHJvamFu')) {
-					const 特洛伊Link = `${atob('dHJvamFuOi8v') + uuid}@${address}:${port + atob('P3NlY3VyaXR5PXRscyZzbmk9') + sni}&alpn=${encodeURIComponent(alpn)}&fp=randomized&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径)}&allowInsecure=1&fragment=1,40-60,30-50,tlshello#${encodeURIComponent(addressid + 节点备注)}`;
+					const 特洛伊Link = `${atob('dHJvamFuOi8v') + uuid}@${address}:${port + atob('P3NlY3VyaXR5PXRscyZzbmk9') + sni}&alpn=${encodeURIComponent(alpn)}&fp=randomized&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 					return 特洛伊Link;
 				} else {
-					const 维列斯Link = `${atob('dmxlc3M6Ly8=') + uuid}@${address}:${port + atob('P2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT10bHMmc25pPQ==') + sni}&alpn=${encodeURIComponent(alpn)}&fp=random&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径) + xhttp}&allowInsecure=1&fragment=1,40-60,30-50,tlshello#${encodeURIComponent(addressid + 节点备注)}`;
+					const 维列斯Link = `${atob('dmxlc3M6Ly8=') + uuid}@${address}:${port + atob('P2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT10bHMmc25pPQ==') + sni}&alpn=${encodeURIComponent(alpn)}&fp=random&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 					return 维列斯Link;
 				}
 
@@ -981,23 +1065,24 @@ export default {
 	}
 };
 
-async function subHtml(request) {
+async function subHtml(request, theme) {
 	const url = new URL(request.url);
 	const HTML = `
 			<!DOCTYPE html>
 			<html>
 			<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>${FileName}</title>
-				${网站图标}
-				<style>
-					:root {
-						--primary-color: #f4a261;
-						--hover-color: #e07630;
-						--bg-color: #fce4d6;
-						--card-bg: #555555;
-					}
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>${FileName}</title>
+                ${网站图标}
+            <style>
+                :root {
+                    --primary-color: ${theme.primaryColor};
+                    --hover-color: ${theme.hoverColor};
+                    --bg-color: ${theme.bgColor};
+                    --gradient-color: ${theme.gradientColor};
+                    --card-bg: ${theme.cardBg};
+                }
 					
 					* {
 						box-sizing: border-box;
@@ -1025,7 +1110,7 @@ async function subHtml(request) {
 						/* 使用rgba设置半透明背景 */
 						background: rgba(255, 255, 255, 0.1);
 						/* 添加磨砂玻璃效果 */
-						backdrop-filter: blur(10px);
+						backdrop-filter: blur(1px);
 						-webkit-backdrop-filter: blur(1px); /* Safari兼容 */
 						max-width: 600px;
 						width: 90%;
@@ -1040,8 +1125,8 @@ async function subHtml(request) {
 					/* 调整hover效果 */
 					.container:hover {
 						transform: translateY(-3px);
-						box-shadow: 0 15px 30px rgba(0,0,0,0.1),
-									inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+						box-shadow: 0 15px 30px rgba(0,0,0,0.05),
+									inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 					}
 					
 					h1 {
@@ -1176,11 +1261,11 @@ async function subHtml(request) {
 						bottom: -3px;
 						border-radius: 50%;
 						animation: rotate 3s linear infinite;
-						background: conic-gradient(
+						background: linear-gradient(
 							from 0deg,
 							transparent 0%,
-							var(--primary-color) 20%,
-							rgba(252,228,214, 0.8) 40%,
+							var(--gradient-color) 20%,
+							var(--gradient-color) 40%,
 							transparent 60%,
 							transparent 100%
 						);
@@ -1423,13 +1508,11 @@ async function subHtml(request) {
 							document.getElementById('result').value = subLink;
 	
 							// 更新二维码
-							const qrcodeDiv = document.getElementById('qrcode');
-							qrcodeDiv.innerHTML = '';
-							new QRCode(qrcodeDiv, {
+						    new QRCode(document.getElementById('qrcode'), {
 								text: subLink,
 								width: 220, // 调整宽度
 								height: 220, // 调整高度
-								colorDark: "#f4a261", // 二维码颜色
+								colorDark: "${theme.qrColor}", // 二维码颜色
 								colorLight: "#ffffff", // 背景颜色
 								correctLevel: QRCode.CorrectLevel.L, // 设置纠错级别
 								scale: 1 // 调整像素颗粒度
